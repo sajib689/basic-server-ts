@@ -12,7 +12,16 @@ app.use((0, cors_1.default)());
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const todos = todo_json_1.default;
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://sajibbabu751:<db_password>@sajib.chgzwan.mongodb.net/?retryWrites=true&w=majority&appName=Sajib";
 const todosFilePath = path_1.default.join(__dirname, "../db/todo.json");
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
 app.get("/todos", async (req, res) => {
     try {
         const result = await todos;

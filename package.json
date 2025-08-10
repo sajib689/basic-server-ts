@@ -2,10 +2,11 @@
   "name": "basic-server",
   "version": "1.0.0",
   "main": "server.ts",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only app/server.ts",
+    "dev": "node api.js && ts-node-dev --respawn --transpile-only app/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/server.js"
+    "start": "node api.js && node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,8 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongodb": "^6.18.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

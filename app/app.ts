@@ -7,11 +7,21 @@ app.use(express.json());
 app.use(cors());
 import fs from "fs";
 import path from "path";
-import { todo } from "node:test";
 const todos: TodoType[] = todosData;
+import { MongoClient, ServerApiVersion } from 'mongodb';
+const uri = "mongodb+srv://sajibbabu751:<db_password>@sajib.chgzwan.mongodb.net/?retryWrites=true&w=majority&appName=Sajib";
 
 const todosFilePath = path.join(__dirname, "../db/todo.json");
 
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+const db = await client.db("todos");
+console.log("db", db)
 app.get("/todos", async (req: Request, res: Response) => {
   try {
     const result = await todos;

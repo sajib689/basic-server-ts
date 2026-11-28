@@ -4,9 +4,9 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
-    "dev": "node init && ts-node-dev --respawn --transpile-only app/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only app/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node init && node dist/server.js"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
